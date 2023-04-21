@@ -10,8 +10,6 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.Tab?>
-<?import javafx.scene.layout.Region?>
-<?import javafx.scene.layout.Pane?>
 <TabPane xmlns:fx="http://javafx.com/fxml" fx:controller="treevisualizer.Controller" tabMinWidth="80">
     <Tab text="Binary Tree">
         <BorderPane>
