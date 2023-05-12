@@ -1,57 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.canvas.Canvas?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.Tab?>
-<TabPane xmlns:fx="http://javafx.com/fxml" fx:controller="treevisualizer.Controller" tabMinWidth="80">
+<?import javafx.scene.layout.Pane?>
+
+<?import javafx.scene.control.ScrollPane?>
+<TabPane fx:controller="treevisualizer.Controller" xmlns:fx="http://javafx.com/fxml" tabMinWidth="80" tabMinHeight="30">
     <Tab text="Binary Tree">
-        <BorderPane>
-            <padding>
-                <Insets bottom="15" left="15" right="15" top="5"/>
-            </padding>
-            <top>
-                <HBox spacing="20">
-                    <VBox alignment="BASELINE_CENTER">
-                        <TextField prefWidth="100"/>
-                        <Button text="Добавить элемент" prefWidth="130"/>
-                    </VBox>
-                    <VBox alignment="BASELINE_CENTER">
-                        <TextField prefWidth="100"/>
-                        <Button text="Найти элемент" prefWidth="130"/>
-                    </VBox>
-                </HBox>
-            </top>
-        </BorderPane>
+        <VBox spacing="15">
+            <padding><Insets bottom="15" left="15" right="15" top="5"/></padding>
+
+            <HBox spacing="15">
+                <VBox alignment="BASELINE_CENTER">
+                    <TextField fx:id="binaryElementToAdd" prefWidth="100"/>
+                    <Button text="Добавить элемент" prefWidth="130" onAction="#binaryAddElement"/>
+                </VBox>
+                <VBox alignment="BASELINE_CENTER">
+                    <TextField prefWidth="100"/>
+                    <Button text="Найти элемент" prefWidth="130"/>
+                </VBox>
+            </HBox>
+            <ScrollPane fx:id="binaryCanvasPane" prefWidth="653" prefHeight="350">
+                <Canvas fx:id="binaryCanvas" width="${binaryCanvasPane.prefWidth}" height="600"/>
+            </ScrollPane>
+        </VBox>
     </Tab>
+
     <Tab text="Trie">
-        <BorderPane>
-            <padding>
-                <Insets bottom="15" left="15" right="15" top="5"/>
-            </padding>
-            <top>
-                <HBox spacing="20">
-                    <VBox alignment="BASELINE_CENTER">
-                        <TextField prefWidth="100"/>
-                        <Button text="Добавить элемент" prefWidth="130"/>
-                    </VBox>
-                    <VBox alignment="BASELINE_CENTER">
-                        <TextField prefWidth="100"/>
-                        <Button text="Найти элемент" prefWidth="130"/>
-                    </VBox>
-                </HBox>
-            </top>
-            <center>
-                <ScrollPane>
-                    <Canvas fx:id="img" height="100" width="100"/>
-                </ScrollPane>
-            </center>
-        </BorderPane>
+        <VBox spacing="15">
+            <padding><Insets bottom="15" left="15" right="15" top="5"/></padding>
+
+            <HBox spacing="15">
+                <VBox alignment="BASELINE_CENTER">
+                    <TextField prefWidth="100"/>
+                    <Button text="Добавить элемент" prefWidth="130"/>
+                </VBox>
+                <VBox alignment="BASELINE_CENTER">
+                    <TextField prefWidth="100"/>
+                    <Button text="Найти элемент" prefWidth="130"/>
+                </VBox>
+            </HBox>
+            <Pane fx:id="trieCanvasPane" prefWidth="500" prefHeight="300">
+                <Canvas fx:id="trieCanvas" width="${trieCanvasPane.prefWidth}" height="${trieCanvasPane.prefHeight}"/>
+            </Pane>
+        </VBox>
     </Tab>
 </TabPane>

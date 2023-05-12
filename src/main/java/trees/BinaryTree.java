@@ -1,7 +1,7 @@
 package trees;
 
 public class BinaryTree {
-    private class Node {
+    public class Node {
         private final int value;
         private Node left;
         private Node right;
@@ -73,5 +73,9 @@ public class BinaryTree {
 
     public void clear() {
         root = null;
+    }
+
+    public Node getRoot() {
+        return root;
     }
 }
