@@ -1,4 +1,4 @@
-module com.example.treevisualisator {
+module com.example.treevisualizer {
     requires javafx.controls;
     requires javafx.fxml;
 

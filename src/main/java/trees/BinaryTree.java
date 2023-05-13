@@ -59,7 +59,6 @@ public class BinaryTree {
         if (node == null)
             return false;
         while (node.getValue() != number) {
-//            System.out.println(node.getValue());
             if (number < node.getValue()) {
                 if (node.hasLeft()) node = node.getLeft();
                 else break;

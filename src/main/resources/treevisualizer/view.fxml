@@ -18,12 +18,15 @@
 
             <HBox spacing="15">
                 <VBox alignment="BASELINE_CENTER">
-                    <TextField fx:id="binaryElementToAdd" prefWidth="100"/>
-                    <Button text="Добавить элемент" prefWidth="130" onAction="#binaryAddElement"/>
+                    <TextField fx:id="binaryElementToAdd" onAction="#binaryAddElement" prefWidth="130"/>
+                    <Button text="Добавить элемент" onAction="#binaryAddElement" prefWidth="130"/>
                 </VBox>
                 <VBox alignment="BASELINE_CENTER">
-                    <TextField prefWidth="100"/>
-                    <Button text="Найти элемент" prefWidth="130"/>
+                    <TextField prefWidth="130"/>
+                    <Button text="Найти элемент" onAction="#binaryFindElement" prefWidth="130"/>
+                </VBox>
+                <VBox alignment="BASELINE_CENTER">
+                    <Button text="Очистить" onAction="#binaryClear" prefWidth="130"/>
                 </VBox>
             </HBox>
             <ScrollPane fx:id="binaryCanvasPane" prefWidth="653" prefHeight="350">
