@@ -1,16 +1,16 @@
 package trees;
 
 public class BinaryTree {
-    public class Node {
+    public class BinaryNode {
         private final int value;
-        private Node left;
-        private Node right;
+        private BinaryNode left;
+        private BinaryNode right;
 
-        public Node(int value) {
+        public BinaryNode(int value) {
             this.value = value;
         }
 
-        public void bind(Node node) {
+        public void bind(BinaryNode node) {
             if (node.value < this.value) {
                 if (this.left == null)
                     this.left = node;
@@ -28,7 +28,7 @@ public class BinaryTree {
             return value;
         }
 
-        public Node getLeft() {
+        public BinaryNode getLeft() {
             return left;
         }
 
@@ -36,7 +36,7 @@ public class BinaryTree {
             return left != null;
         }
 
-        public Node getRight() {
+        public BinaryNode getRight() {
             return right;
         }
 
@@ -45,36 +45,40 @@ public class BinaryTree {
         }
     }
 
-    private Node root;
+    private BinaryNode root;
 
     public void put(int number) {
         if (root == null)
-            root = new Node(number);
+            root = new BinaryNode(number);
         else
-            root.bind(new Node(number));
+            root.bind(new BinaryNode(number));
     }
 
-    public boolean find(int number) {
-        Node node = root;
-        if (node == null)
-            return false;
-        while (node.getValue() != number) {
-            if (number < node.getValue()) {
-                if (node.hasLeft()) node = node.getLeft();
-                else break;
-            } else {
-                if (node.hasRight()) node = node.getRight();
-                else break;
-            }
-        }
-        return node.getValue() == number;
-    }
+//    public boolean find(int number) {
+//        BinaryNode node = root;
+//        if (node == null)
+//            return false;
+//        while (node.getValue() != number) {
+//            if (number < node.getValue()) {
+//                if (node.hasLeft()) node = node.getLeft();
+//                else break;
+//            } else {
+//                if (node.hasRight()) node = node.getRight();
+//                else break;
+//            }
+//        }
+//        return node.getValue() == number;
+//    }
 
     public void clear() {
         root = null;
     }
 
-    public Node getRoot() {
+    public BinaryNode getRoot() {
         return root;
+    }
+
+    public boolean isEmpty() {
+        return root == null;
     }
 }

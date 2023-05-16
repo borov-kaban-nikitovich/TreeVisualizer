@@ -10,7 +10,6 @@
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.layout.Pane?>
 
-<?import javafx.scene.control.ScrollPane?>
 <TabPane fx:controller="treevisualizer.Controller" xmlns:fx="http://javafx.com/fxml" tabMinWidth="80" tabMinHeight="30">
     <Tab text="Binary Tree">
         <VBox spacing="15">
@@ -22,16 +21,16 @@
                     <Button text="Добавить элемент" onAction="#binaryAddElement" prefWidth="130"/>
                 </VBox>
                 <VBox alignment="BASELINE_CENTER">
-                    <TextField prefWidth="130"/>
+                    <TextField fx:id="binaryElementToFind" onAction="#binaryFindElement" prefWidth="130"/>
                     <Button text="Найти элемент" onAction="#binaryFindElement" prefWidth="130"/>
                 </VBox>
                 <VBox alignment="BASELINE_CENTER">
                     <Button text="Очистить" onAction="#binaryClear" prefWidth="130"/>
                 </VBox>
             </HBox>
-            <ScrollPane fx:id="binaryCanvasPane" prefWidth="653" prefHeight="350">
-                <Canvas fx:id="binaryCanvas" width="${binaryCanvasPane.prefWidth}" height="600"/>
-            </ScrollPane>
+            <Pane fx:id="binaryCanvasPane" prefWidth="653" prefHeight="350">
+                <Canvas fx:id="binaryCanvas" width="${binaryCanvasPane.prefWidth}" height="${binaryCanvasPane.prefHeight}"/>
+            </Pane>
         </VBox>
     </Tab>
 
