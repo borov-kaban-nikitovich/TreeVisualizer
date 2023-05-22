@@ -1,56 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.canvas.Canvas?>
-<?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
 <TabPane fx:controller="treevisualizer.Controller" xmlns:fx="http://javafx.com/fxml" tabMinWidth="80" tabMinHeight="30">
     <Tab text="Binary Tree">
         <VBox spacing="15">
-            <padding><Insets bottom="15" left="15" right="15" top="5"/></padding>
+            <padding>
+                <Insets bottom="15" left="15" right="15" top="5"/>
+            </padding>
 
             <HBox spacing="15">
                 <VBox alignment="BASELINE_CENTER">
                     <TextField fx:id="binaryElementToAdd" onAction="#binaryAddElement" prefWidth="130"/>
-                    <Button text="Добавить элемент" onAction="#binaryAddElement" prefWidth="130"/>
+                    <Button text="Добавить число" onAction="#binaryAddElement" prefWidth="130"/>
                 </VBox>
                 <VBox alignment="BASELINE_CENTER">
                     <TextField fx:id="binaryElementToFind" onAction="#binaryFindElement" prefWidth="130"/>
-                    <Button text="Найти элемент" onAction="#binaryFindElement" prefWidth="130"/>
+                    <Button text="Найти число" onAction="#binaryFindElement" prefWidth="130"/>
+                </VBox>
+                <VBox alignment="BASELINE_CENTER">
+                    <TextField fx:id="binaryElementToRemove" onAction="#binaryRemoveElement" prefWidth="130"/>
+                    <Button text="Удалить число" onAction="#binaryRemoveElement" prefWidth="130"/>
                 </VBox>
                 <VBox alignment="BASELINE_CENTER">
                     <Button text="Очистить" onAction="#binaryClear" prefWidth="130"/>
                 </VBox>
             </HBox>
-            <Pane fx:id="binaryCanvasPane" prefWidth="653" prefHeight="350">
-                <Canvas fx:id="binaryCanvas" width="${binaryCanvasPane.prefWidth}" height="${binaryCanvasPane.prefHeight}"/>
+            <Pane fx:id="binaryCanvasPane" prefWidth="653" prefHeight="400">
+                <Canvas fx:id="binaryCanvas" width="${binaryCanvasPane.prefWidth}"
+                        height="${binaryCanvasPane.prefHeight}"/>
             </Pane>
         </VBox>
     </Tab>
 
     <Tab text="Trie">
         <VBox spacing="15">
-            <padding><Insets bottom="15" left="15" right="15" top="5"/></padding>
+            <padding>
+                <Insets bottom="15" left="15" right="15" top="5"/>
+            </padding>
 
             <HBox spacing="15">
                 <VBox alignment="BASELINE_CENTER">
-                    <TextField prefWidth="100"/>
-                    <Button text="Добавить элемент" prefWidth="130"/>
+                    <TextField onAction="#trieAddElement" fx:id="trieElementToAdd" prefWidth="100"/>
+                    <Button onAction="#trieAddElement" text="Добавить строку" prefWidth="130"/>
                 </VBox>
                 <VBox alignment="BASELINE_CENTER">
-                    <TextField prefWidth="100"/>
-                    <Button text="Найти элемент" prefWidth="130"/>
+                    <TextField onAction="#trieFindElement" fx:id="trieElementToFind" prefWidth="100"/>
+                    <Button onAction="#trieFindElement" text="Найти строку" prefWidth="130"/>
+                </VBox>
+                <VBox alignment="BASELINE_CENTER">
+                    <TextField onAction="#trieRemoveElement" fx:id="trieElementToRemove" prefWidth="100"/>
+                    <Button onAction="#trieRemoveElement" text="Удалить строку" prefWidth="130"/>
+                </VBox>
+                <VBox alignment="BASELINE_CENTER">
+                    <Button text="Очистить" onAction="#trieClear" prefWidth="130"/>
                 </VBox>
             </HBox>
-            <Pane fx:id="trieCanvasPane" prefWidth="500" prefHeight="300">
-                <Canvas fx:id="trieCanvas" width="${trieCanvasPane.prefWidth}" height="${trieCanvasPane.prefHeight}"/>
-            </Pane>
+            <ScrollPane fx:id="trieCanvasPane" prefWidth="653" prefHeight="500">
+                <Canvas fx:id="trieCanvas" width="${trieCanvasPane.prefWidth}" height="700"/>
+            </ScrollPane>
         </VBox>
     </Tab>
 </TabPane>
