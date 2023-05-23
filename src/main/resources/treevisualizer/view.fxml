@@ -59,7 +59,7 @@
                     <Button text="Очистить" onAction="#trieClear" prefWidth="130"/>
                 </VBox>
             </HBox>
-            <ScrollPane fx:id="trieCanvasPane" prefWidth="670" prefHeight="500">
+            <ScrollPane fx:id="trieCanvasPane" prefWidth="654" prefHeight="500">
                 <Canvas fx:id="trieCanvas" width="${trieCanvasPane.prefWidth}" height="700"/>
             </ScrollPane>
         </VBox>
