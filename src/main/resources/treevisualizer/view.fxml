@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 
 <TabPane fx:controller="treevisualizer.Controller" xmlns:fx="http://javafx.com/fxml" tabMinWidth="80" tabMinHeight="30">
-    <Tab text="Binary Tree">
+    <Tab text="Binary Tree" closable="false">
         <VBox spacing="15">
             <padding>
                 <Insets bottom="15" left="15" right="15" top="5"/>
@@ -36,7 +36,7 @@
         </VBox>
     </Tab>
 
-    <Tab text="Trie">
+    <Tab text="Trie" closable="false">
         <VBox spacing="15">
             <padding>
                 <Insets bottom="15" left="15" right="15" top="5"/>
