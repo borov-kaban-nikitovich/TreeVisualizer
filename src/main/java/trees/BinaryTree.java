@@ -4,11 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BinaryTree {
+
     public static class BinaryNode {
+
         private final int value;
         private BinaryNode left;
         private BinaryNode right;
         private final int layer;
+
+        public BinaryNode(int value) {
+            this.value = value;
+            this.layer = 0;
+        }
 
         public BinaryNode(int value, int layer) {
             this.value = value;
@@ -41,8 +48,8 @@ public class BinaryTree {
             return left;
         }
 
-        public void setLeft(BinaryNode left) {
-            this.left = left;
+        public void removeLeft() {
+            this.left = null;
         }
 
         public boolean hasLeft() {
@@ -53,13 +60,19 @@ public class BinaryTree {
             return right;
         }
 
-        public void setRight(BinaryNode right) {
-            this.right = right;
+        public void removeRight() {
+            this.right = null;
         }
 
         public boolean hasRight() {
             return right != null;
         }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
     }
 
     private BinaryNode root;
@@ -106,16 +119,14 @@ public class BinaryTree {
             if (number > node.getValue()) {
                 if (node.hasRight()) {
                     if (node.getRight().getValue() == number) {
-                        node.setRight(null);
+                        node.removeRight();
                         return;
                     } else node = node.getRight();
                 } else return;
-            }
-
-            else if (number < node.getValue()) {
+            } else if (number < node.getValue()) {
                 if (node.hasLeft()) {
                     if (node.getLeft().getValue() == number) {
-                        node.setLeft(null);
+                        node.removeLeft();
                         return;
                     } else node = node.getLeft();
                 } else return;
@@ -134,4 +145,5 @@ public class BinaryTree {
     public boolean isEmpty() {
         return root == null;
     }
+
 }

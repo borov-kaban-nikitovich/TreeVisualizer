@@ -24,6 +24,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
+
     private final BinaryTree binaryTree = new BinaryTree();
     private final Trie trie = new Trie();
 
@@ -50,8 +51,8 @@ public class Controller implements Initializable {
 
     private final int circleSize = 40;
     private final int spaceBetween = 45;
-    private final int binaryDepth = 7; // Максимальное число отображающихся слоёв бинарного дерева
-    private final int trieDepth = 13 + 1; // Максимальная длина строки + место для корня
+    private final int binaryDepth = 8; // Максимальное число отображающихся слоёв бинарного дерева
+    private final int trieDepth = 14 + 1; // Максимальная длина строки + место для корня
     private final Color mainColor = Color.WHITE;
     private final Color selectionColor = Color.PAPAYAWHIP;
     private final Color textColor = Color.BLACK;
@@ -86,6 +87,20 @@ public class Controller implements Initializable {
             new Alert(Alert.AlertType.ERROR, String.format("\"%s\" не является integer!", inputString)).show();
             return;
         }
+
+        List<BinaryNode> path = binaryTree.getPathTo(number);
+        if (path.size() != 0) {
+            BinaryNode lastElement = path.get(path.size() - 1);
+            if (lastElement.getValue() != number && lastElement.getLayer() + 1 == binaryDepth) {
+                new Alert(
+                        Alert.AlertType.ERROR,
+                        String.format("К сожалению, вы достигли лимита по глубине дерева.\n" +
+                                "Максимальная допустимая длина -- %d.", binaryDepth)
+                ).show();
+                return;
+            }
+        }
+
         binaryTree.put(number);
         paintBinaryTree();
     }
@@ -108,6 +123,9 @@ public class Controller implements Initializable {
     }
 
     private void paintBinaryNode(BinaryNode node, int order, BinaryNode selected) {
+        if (node == null)
+            return;
+
         int layer = node.getLayer();
 
         if (layer > binaryDepth)
@@ -197,8 +215,7 @@ public class Controller implements Initializable {
                             ).show()
                     )
             );
-        }
-        else
+        } else
             timeline.getKeyFrames().add(
                     new KeyFrame(pauseTime.multiply(frameOrder), event ->
                             new Alert(
@@ -213,6 +230,12 @@ public class Controller implements Initializable {
     }
 
     public void binaryRemoveElement() {
+        if (binaryTree.isEmpty()) {
+            new Alert(Alert.AlertType.WARNING, "В двоичном дереве ничего нет... Здесь нечего удалять...").show();
+            binaryElementToRemove.clear();
+            return;
+        }
+
         String inputString = binaryElementToRemove.getText();
         binaryElementToRemove.clear();
 
@@ -239,15 +262,17 @@ public class Controller implements Initializable {
         String string = trieElementToAdd.getText();
         trieElementToAdd.clear();
 
-        if (string.length() > trieDepth - 1)
+        if (string.length() > trieDepth - 1) {
             new Alert(
                     Alert.AlertType.ERROR,
-                    String.format("Строка \"%s\" слишком длинная. Введите строку до %d символов длиной.", string, trieDepth - 1)
+                    String.format("Строка \"%s\" слишком длинная (%d символов). " +
+                            "Введите строку до %d символов длиной.", string, string.length(), trieDepth - 1)
             ).show();
-        else {
-            trie.put(string);
-            paintTrie();
+            return;
         }
+
+        trie.put(string);
+        paintTrie();
     }
 
     // Paints a circle by its center coordinates
@@ -274,9 +299,6 @@ public class Controller implements Initializable {
 
     private void paintTrieNode(TrieNode node, List<TrieNode> selected) {
         int layer = node.getLayer();
-
-        if (layer >= trieDepth)
-            return;
 
         int order = trieNodesAlreadyPainted.get(layer) + 1; // Какой по счёту элемент выводим
         trieNodesAlreadyPainted.set(layer, order);
@@ -338,17 +360,16 @@ public class Controller implements Initializable {
             timeline.getKeyFrames().add(frame);
         }
         if (path.size() != string.length() + 1) {
-        timeline.getKeyFrames().addAll(
-                new KeyFrame(pauseTime.multiply(frameOrder), event -> paintTrie()),
-                new KeyFrame(pauseTime.multiply(frameOrder), event ->
-                        new Alert(
-                                Alert.AlertType.INFORMATION,
-                                String.format("Строка \"%s\" не найдена :(", string)
-                        ).show()
-                )
-        );
-    }
-        else
+            timeline.getKeyFrames().addAll(
+                    new KeyFrame(pauseTime.multiply(frameOrder), event -> paintTrie()),
+                    new KeyFrame(pauseTime.multiply(frameOrder), event ->
+                            new Alert(
+                                    Alert.AlertType.INFORMATION,
+                                    String.format("Строка \"%s\" не найдена :(", string)
+                            ).show()
+                    )
+            );
+        } else
             timeline.getKeyFrames().add(
                     new KeyFrame(pauseTime.multiply(frameOrder), event ->
                             new Alert(
@@ -362,6 +383,12 @@ public class Controller implements Initializable {
     }
 
     public void trieRemoveElement() {
+        if (trie.getRoot().getChildren().size() == 0) {
+            new Alert(Alert.AlertType.WARNING, "В префиксном дереве ничего нет... Здесь нечего удалять...").show();
+            trieElementToRemove.clear();
+            return;
+        }
+
         String string = trieElementToRemove.getText();
         trieElementToRemove.clear();
 
@@ -373,4 +400,5 @@ public class Controller implements Initializable {
         trie.clear();
         paintTrie();
     }
+
 }

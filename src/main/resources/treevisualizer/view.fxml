@@ -29,7 +29,7 @@
                     <Button text="Очистить" onAction="#binaryClear" prefWidth="130"/>
                 </VBox>
             </HBox>
-            <Pane fx:id="binaryCanvasPane" prefWidth="653" prefHeight="400">
+            <Pane fx:id="binaryCanvasPane" prefWidth="670" prefHeight="420">
                 <Canvas fx:id="binaryCanvas" width="${binaryCanvasPane.prefWidth}"
                         height="${binaryCanvasPane.prefHeight}"/>
             </Pane>
@@ -59,7 +59,7 @@
                     <Button text="Очистить" onAction="#trieClear" prefWidth="130"/>
                 </VBox>
             </HBox>
-            <ScrollPane fx:id="trieCanvasPane" prefWidth="653" prefHeight="500">
+            <ScrollPane fx:id="trieCanvasPane" prefWidth="670" prefHeight="500">
                 <Canvas fx:id="trieCanvas" width="${trieCanvasPane.prefWidth}" height="700"/>
             </ScrollPane>
         </VBox>

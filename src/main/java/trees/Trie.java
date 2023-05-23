@@ -1,10 +1,11 @@
 package trees;
 
-
 import java.util.*;
 
 public class Trie {
+
     public static class TrieNode {
+
         private final Character value;
         private final Map<Character, TrieNode> boundNodes = new HashMap<>();
         private final int layer;
@@ -59,6 +60,12 @@ public class Trie {
         public int getLayer() {
             return layer;
         }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
     }
 
     private TrieNode root = new TrieNode();

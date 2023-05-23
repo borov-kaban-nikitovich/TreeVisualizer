@@ -8,12 +8,13 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class Application extends javafx.application.Application {
+
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("view.fxml"));
 
         Parent root = fxmlLoader.load();
-        Scene scene = new Scene(root, 700, 500);
+        Scene scene = new Scene(root, 700, 600);
 
         stage.setTitle("Tree Visualizer");
         stage.setScene(scene);
@@ -24,4 +25,5 @@ public class Application extends javafx.application.Application {
     public static void main(String[] args) {
         launch();
     }
+
 }
